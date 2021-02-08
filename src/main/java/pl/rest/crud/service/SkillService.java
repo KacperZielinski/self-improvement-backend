@@ -3,11 +3,10 @@ package pl.rest.crud.service;
 import org.springframework.stereotype.Service;
 import pl.rest.crud.dto.SkillDto;
 import pl.rest.crud.mapper.SkillMapper;
-import pl.rest.crud.model.Skill;
 import pl.rest.crud.repository.SkillRepository;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SkillService {
@@ -21,11 +20,14 @@ public class SkillService {
     }
 
     public List<SkillDto> getAllSkills() {
-        return Arrays.asList(skillMapper.toSkillDto(Skill.builder()
-                .id(1L)
-                .skillName("Really dummy..")
-                .skillType(2)
-                .build()
-        ));
+        return skillRepository
+                .findAll()
+                .stream()
+                .map(skillMapper::toSkillDto)
+                .collect(Collectors.toList());
+    }
+
+    public void addNewSkill(SkillDto skillDto) {
+        skillRepository.save(skillMapper.toSkill(skillDto));
     }
 }
