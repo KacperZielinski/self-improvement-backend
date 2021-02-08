@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.rest.crud.dto.SkillDto;
 import pl.rest.crud.service.SkillService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/api/skills")
 public class SkillRestController {
 
     private SkillService skillService;
@@ -17,7 +19,7 @@ public class SkillRestController {
     }
 
     @GetMapping
-    public SkillDto getAllSkills() {
+    public List<SkillDto> getAllSkills() {
         return skillService.getAllSkills();
     }
 }

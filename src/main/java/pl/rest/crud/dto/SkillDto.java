@@ -1,20 +1,14 @@
 package pl.rest.crud.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class SkillDto implements Serializable {
     private static final long serialVersionUID = 2471539214785929291L;
 
     private long id;
-    private String dummyName;
-    private int dummyAge;
+    private String skillName;
+    private int skillType;
 }

@@ -6,6 +6,9 @@ import pl.rest.crud.mapper.SkillMapper;
 import pl.rest.crud.model.Skill;
 import pl.rest.crud.repository.SkillRepository;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class SkillService {
 
@@ -17,12 +20,12 @@ public class SkillService {
         this.skillMapper = skillMapper;
     }
 
-    public SkillDto getAllSkills() {
-        return skillMapper.toSkillDto(Skill.builder()
+    public List<SkillDto> getAllSkills() {
+        return Arrays.asList(skillMapper.toSkillDto(Skill.builder()
                 .id(1L)
-                .skillType(13)
                 .skillName("Really dummy..")
+                .skillType(2)
                 .build()
-        );
+        ));
     }
 }
