@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DummyDto implements Serializable {
+public class SkillDto implements Serializable {
     private static final long serialVersionUID = 2471539214785929291L;
 
     private long id;

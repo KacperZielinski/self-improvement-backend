@@ -17,12 +17,12 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Dummy {
+public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String dummyName;
-    private int dummyAge;
+    private String skillName;
+    private int skillType;
 }
