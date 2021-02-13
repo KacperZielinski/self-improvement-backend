@@ -21,16 +21,15 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
-public class Skill {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String skillName;
-    private int skillType;
+    private String name;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "skill_id")
-    private List<SkillPart> skillPartList;
+    @JoinColumn(name = "project_id")
+    private List<ProjectTask> projectTasks;
 }
