@@ -5,6 +5,7 @@ import pl.rest.crud.dto.SkillDto;
 import pl.rest.crud.mapper.SkillMapper;
 import pl.rest.crud.repository.SkillRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,13 @@ public class SkillService {
                 .stream()
                 .map(skillMapper::toSkillDto)
                 .collect(Collectors.toList());
+    }
+
+    public SkillDto getSkillById(long id) {
+        return skillRepository
+                .findById(id)
+                .map(skillMapper::toSkillDto)
+                .orElseThrow(() -> new EntityNotFoundException("Skill of id: " + id + " not exists!"));
     }
 
     public void addNewSkill(SkillDto skillDto) {
