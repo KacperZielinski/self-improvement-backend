@@ -5,6 +5,7 @@ import pl.rest.crud.dto.ProjectDto;
 import pl.rest.crud.mapper.ProjectMapper;
 import pl.rest.crud.repository.ProjectRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,13 @@ public class ProjectService {
                 .stream()
                 .map(projectMapper::toProjectDto)
                 .collect(Collectors.toList());
+    }
+
+    public ProjectDto getProjectById(long id) {
+        return projectRepository
+                .findById(id)
+                .map(projectMapper::toProjectDto)
+                .orElseThrow(() -> new EntityNotFoundException("Project of id: " + id + " not exists!"));
     }
 
     public void addNewProject(ProjectDto project) {
